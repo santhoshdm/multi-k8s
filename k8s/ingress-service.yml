@@ -1,4 +1,4 @@
-apiVersion: extensons/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-service
@@ -16,4 +16,4 @@ spec:
           - path: /api/?(.*)
             backend:
               serviceName: server-cluster-ip-service
-              serviceoPort: 5000
+              servicePort: 5000
