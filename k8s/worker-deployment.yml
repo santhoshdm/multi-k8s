@@ -12,8 +12,8 @@ spec:
       labels:
         component: worker
     spec:
-      contianers:
-        - name: worker-deployment
+      containers:
+        - name: worker
           image: dmsanthosh/multi-worker
           env:
             - name: REDIS_HOST
