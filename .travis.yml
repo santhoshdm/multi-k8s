@@ -7,15 +7,15 @@ env:
     - SHA=$(git rev-parse HEAD)
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
-  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
-  - curl https://sdk.cloud.google.com | bash > /dev/null;
-  - source $HOME/google-cloud-sdk/path.bash.inc
-  - gcloud components update kubectl
-  - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project multi-k8s-273412
-  - gcloud config set compute/zone us-central1-c
-  - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  #- openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
+  #- curl https://sdk.cloud.google.com | bash > /dev/null;
+  #- source $HOME/google-cloud-sdk/path.bash.inc
+  #- gcloud components update kubectl
+  #- gcloud auth activate-service-account --key-file service-account.json
+  #- gcloud config set project multi-k8s-273412
+  #- gcloud config set compute/zone us-central1-c
+  #- gcloud container clusters get-credentials multi-cluster
+  #- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t dmsanthosh/react-test -f ./client/Dockerfile.test ./client
 
 script:
@@ -26,3 +26,12 @@ deploy:
   script: bash ./deploy.sh
   on:
     branch: master
+
+notifications:
+  slack:
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
+    on_success: always
+    on_failure: always
+    rooms:
+      - secure: ioKYEPliwid3uMo1II1q8P1aFXaRSV09j66PT0X+AG2eFuJYoBzdaQBmvfYpSTeDyZeIdL8SCyKebyR5mZYhRez0AqCxN1bJXk4Mr3KLRCFw72jWkzYzkdM6fi7ZhWDlmLjqvke4EzxxBOj6ZOG4i5GDok0xD2a5eMCAUPv2YoN+TXUlevjFSH7peowHB9PQ8HGadPS0TJGlSdnAlsdexrpcL655JxteSWxsiOKaSN1WROT7qexI3mS3JN+LwaSTgQIlIurYFEdlAlWL7cFMtd0taTWbchTwWJ/QMNzEJxYnhpCeQo952f6wpdleNkWAuTbT+N+GQt+L3qCTVYwoYYqtCPE1MeQFMfnQNwtNxNy94RQ+e7dJ/7VjDJ5CPT96Nx8gIrMXIRH6fRiAviFdiTTnjJg0eqwXUKbAO30sldQZVSPxKF5qaijLaSi1OzVa0PLCbGs9ioQTP6yp+j079VgQ7y6uYENkRBXjCFgSF4H3jFP9wTiYsf0Kosez3c2301ixVryLc34AQHrkamvs6TuIgOUBc3srv1vnINDFTCUNSUnNf4aZwrR1BzriQsA5UkKqMHhvqmRi6oVEfRZ8Hti/b4zSRPrcz32NRRm8QnipVtI9OJpBi1JaUKwpQr74CX+/tBKSNgFPlTVrVFXugjuUQ0JCYGMop3g6T5h1H7I=
