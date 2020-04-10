@@ -1,28 +1,9 @@
-sudo: required
-services:
-  - docker
-
-env:
-  global:
-    - SHA=$(git rev-parse HEAD)
-    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-before_install:
-  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
-  - curl https://sdk.cloud.google.com | bash > /dev/null;
-  - source $HOME/google-cloud-sdk/path.bash.inc
-  - gcloud components update kubectl
-  - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project multi-k8s-273412
-  - gcloud config set compute/zone us-central1-c
-  - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t dmsanthosh/react-test -f ./client/Dockerfile.test ./client
-
-script:
-  - docker run -e CI=true dmsanthosh/react-test npm test -- --coverage
-
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
+notifications:
+  slack:
+    secure: uAOyHiskJad4L46Z2eLOAb241185nu2ts4wwCwRhF8hGEFR0hqOOkbmmO7CIQHbBVMLrowbwddgQR0YQjMe/H8wQfwCXZimvT0AA6GW3/2ZowA/lrqqeGsUjJ9et/knpCRaY2gLBeT7MzLW+nvBsdeSLSDxISW0Du7GMjMzf0nAl6YSHQyS1HO8svvggNpHTmcE8s+7gSfdO9lo2iF8LDdc71AJHmnzTHkFSSpmzqmg0i9M0+abVe28zFrHOF6yQtXvReYr4SgTIwphCyFgiBvIxirnJEY8LJOSRHF+1+S1cYR8lbWxJORzo2Hkg/NkaSfqftqxwMnNdf4q4rLKxk9SCbkqTPX2sw2bszznQyibq/A5wH6jnZQnD29VNDW56VItDfhpMblL8IYNAsk7YJl45dS0ERz7tpPq3sv/gwwzVxFe0QF0EBuE+H+bGASljXWKMUU+74O+clspYql9cRB2JAItqTCWmFg66RvbeOtTuYAXK3EUOX9DT1DZ3nheXEaeEFWBqAigZwQZnzqGS8XCGbfZNpbk0sB5lCU/pkUbf+emoQPFA4TU9nMdFUM9mjhccsoaEoNpyn1WQhT5yVr/Sva0U18Wu7HFzOgIp1QmM8o4SLyOIt7JDbEB3BmTn2CNO1P/a4teT/xnP2zIRT3BIPkiKEJJOLJcYk9DO6kA=
