@@ -39,6 +39,7 @@ Successfully logged in as santhoshdm!
 # travis init
 Outdated CLI version, run `gem install travis`.
 .travis.yml already exists, use --force to override
+travis encrypt "multi-k8s:ScpOqN0QVbt8fQg5V418zqvU" --add notifications.slack.rooms -r santhoshdm/multi-k8s
 # travis encrypt "multi-k8s:JvARGxATLg61mcdv8yeWgXb0" --add notifications.slack -r santhoshdm/slack-integration
 Outdated CLI version, run `gem install travis`.
 # cat .travis.yml
