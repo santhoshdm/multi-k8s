@@ -7,18 +7,19 @@ env:
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
   - docker build -t dmsanthosh/react-test -f ./client/Dockerfile.test ./client
-script:
-  - docker run -e CI=true dmsanthosh/react-test npm test -- --coverage
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+#script:
+#  - docker run -e CI=true dmsanthosh/react-test npm test -- --coverage
+#deploy:
+#  provider: script
+#  script: bash ./deploy.sh
+#  on:
+#    branch: master
+
 notifications:
   slack:
     template:
       - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
-    on_success: always
-    on_failure: always
+    #on_success: always
+    #on_failure: always
     rooms:
       - secure: N1oSQnKRthqNLgezZbNNXnics/CC+Z8jrp3Kf5oNttVwKs2V7/bqWN4BhWtM9xy+VHEKoS6Ua8Ue9YJ3MeDPhPdDOilZYLrAAUpD+fBC2Swq5fFEcOcvfHfg9t4WntL4SAdMOVTH3mn0pqi7fv5dHaZnYKxE0UTVoW+5jZXC8eETvcG0xHLmwu4D1lsDAq1YAi3PUBQDyVHKQ3TfVgiRBxI+XYnf00VUCIR4aaV+kdCrbo+FBtG7upxgPV+PBRrrebloULsveoEYqr6dHDq56lx6pUm/vjzzBfXn2iCdIfX3gDRaa0xQK4Pv3qfzM3eUhijA0enrxaftxUb4FUT0LAYzpWOuU634PUXGkFfpgaTRl4Z7yO5IBJvrkKG59Dn2fWq2th1pfTuzwlH+Dkgc8mMrwylyaqJ4cENqu9qaYP8mhoLP1RbOTiBYC1uoOqubgi0733z9uJLeLcTXQLUB2xE0UI6h9vIy23fvC4f9yxPcUczLZdDQmNyAwq/cTD8lFpSpbwNKXqPUZKnp7X5JUApSd+5JgdByQoRwu/SSi337cJb2A453gIepoPs+uw+U1OVtUnEwNpG5xmtW1QcwQfT9kJPkB4UpC8e4Wxyx2qCxf2hcV0gXO+gQ8iphsTkVlM164qIlFNm6ZUcPRMzA9fXWG2m0WHPrXpIv2uOIEtk=
