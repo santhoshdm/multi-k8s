@@ -18,7 +18,7 @@ before_install:
   - npm install -g snyk
   - snyk auth "$SYNK_TOKEN"
   - docker build -t dmsanthosh/react-test -f ./client/Dockerfile.test ./client
-  - snyk test
+  - snyk test --docker dmsanthosh/react-test
 
 script:
   - docker run -e CI=true dmsanthosh/react-test npm test -- --coverage
