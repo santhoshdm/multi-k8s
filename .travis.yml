@@ -18,7 +18,7 @@ notifications:
   slack:
     template:
       - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
-    #on_success: always
-    #on_failure: always
+    on_success: always
+    on_failure: always
     rooms:
-      - secure: W+kIaVUZIEYGJjoIbiYYKUruwG1LxfZlBaPr02enFdHibDFZd1DICToYVzeH5VanYl4LiWMnjnpw6LLYhA0l5plTCLHgza0Hy3kfW+eZogQ8vx0h6OcaF/w8wOJC+QrGb3PdhdH/qkNYBCJdMDb1O94papviSQNeipaf3wBCRr7B89PUOnvlRCzg6vJxA/4OCpQS11CoaMy3LlqzjSAoN1BWWcg9QRXCSxURwoaYSiGZxy8Rp7gGTo2gSPkJj2Tf822vR0RgjYihEODuMlvQdqnq3yQboqtPxfwQhfYX2m2/ILweqN74TTqXlkq+rlSPzRyLMaT0hx3F96bzXRY9HsVspO7nfVOsN3e/kj/4AB+NkeK+ZM4JZ+pSYxrwHUPBvUrNYj7gVp8QbAfaZ3jRsnofXYz0hJcuNtvpCPcn0FUc6kCQFKA+J5taH8RH4DFU6g7Bbav9qowxKsG+o1DD9lQJDfUMObreIvjfNFP6i2fO/H3g+yEEUbGnwHx3C8hQX7GsHgSK7iUIm0qPhdIiwXnV4iVB19+jnqYFp3eW9BXjr5LdoUO6Qf7QYfx1C46fpdd+uktZ3BGTW+gNNiAxhJyXtqVLLnkbI9jziFOtR+D0l23Zd6GygP9qIMxzPo9luiAqhitY09yfwphd4C+VRlMNBEdJICtPMFEAcuVWcak=
+      - secure: N1oSQnKRthqNLgezZbNNXnics/CC+Z8jrp3Kf5oNttVwKs2V7/bqWN4BhWtM9xy+VHEKoS6Ua8Ue9YJ3MeDPhPdDOilZYLrAAUpD+fBC2Swq5fFEcOcvfHfg9t4WntL4SAdMOVTH3mn0pqi7fv5dHaZnYKxE0UTVoW+5jZXC8eETvcG0xHLmwu4D1lsDAq1YAi3PUBQDyVHKQ3TfVgiRBxI+XYnf00VUCIR4aaV+kdCrbo+FBtG7upxgPV+PBRrrebloULsveoEYqr6dHDq56lx6pUm/vjzzBfXn2iCdIfX3gDRaa0xQK4Pv3qfzM3eUhijA0enrxaftxUb4FUT0LAYzpWOuU634PUXGkFfpgaTRl4Z7yO5IBJvrkKG59Dn2fWq2th1pfTuzwlH+Dkgc8mMrwylyaqJ4cENqu9qaYP8mhoLP1RbOTiBYC1uoOqubgi0733z9uJLeLcTXQLUB2xE0UI6h9vIy23fvC4f9yxPcUczLZdDQmNyAwq/cTD8lFpSpbwNKXqPUZKnp7X5JUApSd+5JgdByQoRwu/SSi337cJb2A453gIepoPs+uw+U1OVtUnEwNpG5xmtW1QcwQfT9kJPkB4UpC8e4Wxyx2qCxf2hcV0gXO+gQ8iphsTkVlM164qIlFNm6ZUcPRMzA9fXWG2m0WHPrXpIv2uOIEtk=
