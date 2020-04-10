@@ -18,7 +18,7 @@ notifications:
   slack:
     template:
       - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
-    on_success: always
-    on_failure: always
+    #on_success: always
+    #on_failure: always
     rooms:
       - secure: W+kIaVUZIEYGJjoIbiYYKUruwG1LxfZlBaPr02enFdHibDFZd1DICToYVzeH5VanYl4LiWMnjnpw6LLYhA0l5plTCLHgza0Hy3kfW+eZogQ8vx0h6OcaF/w8wOJC+QrGb3PdhdH/qkNYBCJdMDb1O94papviSQNeipaf3wBCRr7B89PUOnvlRCzg6vJxA/4OCpQS11CoaMy3LlqzjSAoN1BWWcg9QRXCSxURwoaYSiGZxy8Rp7gGTo2gSPkJj2Tf822vR0RgjYihEODuMlvQdqnq3yQboqtPxfwQhfYX2m2/ILweqN74TTqXlkq+rlSPzRyLMaT0hx3F96bzXRY9HsVspO7nfVOsN3e/kj/4AB+NkeK+ZM4JZ+pSYxrwHUPBvUrNYj7gVp8QbAfaZ3jRsnofXYz0hJcuNtvpCPcn0FUc6kCQFKA+J5taH8RH4DFU6g7Bbav9qowxKsG+o1DD9lQJDfUMObreIvjfNFP6i2fO/H3g+yEEUbGnwHx3C8hQX7GsHgSK7iUIm0qPhdIiwXnV4iVB19+jnqYFp3eW9BXjr5LdoUO6Qf7QYfx1C46fpdd+uktZ3BGTW+gNNiAxhJyXtqVLLnkbI9jziFOtR+D0l23Zd6GygP9qIMxzPo9luiAqhitY09yfwphd4C+VRlMNBEdJICtPMFEAcuVWcak=
